@@ -35,7 +35,7 @@ pipeline{
 
         stage("Build"){
             steps{
-                dir("JenkinsDemoProject"){
+                dir("Demo-Jenkins-Repo/JenkinsDemoProject"){
                     sh "gradle clean build"
                 }
             }
@@ -43,7 +43,7 @@ pipeline{
 
         stage("Test"){
             steps{
-                 dir("JenkinsDemoProject"){
+                 dir("Demo-Jenkins-Repo/JenkinsDemoProject"){
                     sh "gradle test"
                 }
             }
@@ -52,7 +52,7 @@ pipeline{
         stage("Run the App"){
             steps{
                 echo "Running JAVA APP"
-                dir("JenkinsDemoProject/build/libs"){
+                dir("Demo-Jenkins-Repo/JenkinsDemoProject/build/libs"){
                     sh "java -jar JenkinsDemoProject-0.0.1-SNAPSHOT.jar"
                 }
             }
