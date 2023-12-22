@@ -32,17 +32,22 @@ pipeline{
                 sh "git clone https://github.com/kushal-banik-hyland/Demo-Jenkins-Repo.git"
             }
         }
-
+ 
         stage("Build"){
             steps{
-                sh "gradlew clean build"
+                dir("Demo-Jenkins-Repo/JenkinsDemoProject"){
+                    sh "chmod +x gradlew"
+                }
+                dir("Demo-Jenkins-Repo/JenkinsDemoProject"){
+                    sh "./gradlew clean build"
+                }
             }
         }
 
         stage("Test"){
             steps{
                  dir("Demo-Jenkins-Repo/JenkinsDemoProject"){
-                    sh "gradlew test"
+                    sh "./gradlew test"
                 }
             }
         }
