@@ -28,5 +28,11 @@ pipeline{
                 }
             }
         }
+
+        stage("Release"){
+            steps{
+                echo "Releasing The App to Cloud"
+            }
+        }
     }
 }
