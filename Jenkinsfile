@@ -1,15 +1,15 @@
 pipeline{
     parameters{
-        String{
+        String(
             name:"Build_Version",
             defaultValue:"V3.0.0",
             description:"Version associated with current build"
-        }
+        )
     }
 
     agent any
 
-    
+
     stages{
         stage("Clean Up"){
             steps{
