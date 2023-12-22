@@ -31,7 +31,15 @@ pipeline{
 
         stage("Release"){
             steps{
-                echo "Releasing The App to Cloud"
+                echo "Releasing The App to Market"
+            }
+        }
+
+        stage("Clean"){
+            steps{
+                dir("simple-java-maven-app"){
+                    sh "mvn clean"
+                }
             }
         }
     }
