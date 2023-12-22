@@ -35,16 +35,14 @@ pipeline{
 
         stage("Build"){
             steps{
-                dir("Demo-Jenkins-Repo/JenkinsDemoProject"){
-                    sh "gradle clean build"
-                }
+                sh "gradlew clean build"
             }
         }
 
         stage("Test"){
             steps{
                  dir("Demo-Jenkins-Repo/JenkinsDemoProject"){
-                    sh "gradle test"
+                    sh "gradlew test"
                 }
             }
         }
