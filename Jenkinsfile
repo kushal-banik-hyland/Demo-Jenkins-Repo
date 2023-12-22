@@ -38,7 +38,10 @@ pipeline{
         stage("Clean"){
             steps{
                 dir("simple-java-maven-app"){
+                    echo "Cleaning The Files"
+                    sh "ls"
                     sh "mvn clean"
+                    echo "All Cleaned"
                 }
             }
         }
