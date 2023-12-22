@@ -1,14 +1,24 @@
 pipeline{
     parameters{
         string(
-            name:"Build_Version",
-            defaultValue:"V3.0.0",
+            name:"SERVER_NAME",
+            defaultValue:"localhost",
+            description:"Version associated with current build"
+        )
+
+        string(
+            name:"SERVER_PORT",
+            defaultValue:"8080",
             description:"Version associated with current build"
         )
     }
 
-    agent any
+    environment{
+        SERVER_NAME = "${params.SERVER_NAME}"
+        SERVER_PORT = "${params.SERVER_PORT}"
+    }
 
+    agent any
 
     stages{
         stage("Clean Up"){
@@ -19,22 +29,31 @@ pipeline{
         
         stage("Clone Repo"){
             steps{
-                sh "git clone https://github.com/jenkins-docs/simple-java-maven-app.git"
+                sh "git clone https://github.com/kushal-banik-hyland/Demo-Jenkins-Repo.git"
             }
         }
 
         stage("Build"){
             steps{
-                dir("simple-java-maven-app"){
-                    sh "mvn clean install"
+                dir("JenkinsDemoProject"){
+                    sh "gradle clean build"
                 }
             }
         }
 
         stage("Test"){
             steps{
-                 dir("simple-java-maven-app"){
-                    sh "mvn test"
+                 dir("JenkinsDemoProject"){
+                    sh "gradle test"
+                }
+            }
+        }
+
+        stage("Run the App"){
+            steps{
+                echo "Running JAVA APP"
+                dir("JenkinsDemoProject/build/libs"){
+                    sh "java -jar JenkinsDemoProject-0.0.1-SNAPSHOT.jar"
                 }
             }
         }
