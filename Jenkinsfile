@@ -1,6 +1,6 @@
 pipeline{
     parameters{
-        String(
+        string(
             name:"Build_Version",
             defaultValue:"V3.0.0",
             description:"Version associated with current build"
