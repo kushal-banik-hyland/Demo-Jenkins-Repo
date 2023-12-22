@@ -52,14 +52,14 @@ pipeline{
             }
         }
 
-        stage("Run the App"){
-            steps{
-                echo "Running JAVA APP"
-                dir("Demo-Jenkins-Repo/JenkinsDemoProject/build/libs"){
-                    sh "java -jar JenkinsDemoProject-0.0.1-SNAPSHOT.jar"
-                }
-            }
-        }
+        // stage("Run the App"){
+        //     steps{
+        //         echo "Running JAVA APP"
+        //         dir("Demo-Jenkins-Repo/JenkinsDemoProject/build/libs"){
+        //             sh "java -jar JenkinsDemoProject-0.0.1-SNAPSHOT.jar"
+        //         }
+        //     }
+        // }
 
         stage("Release"){
             steps{
